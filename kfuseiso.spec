@@ -11,7 +11,7 @@ Group:		X11/Applications
 Source0:	http://ubiz.ru/dm/%{name}-%{version}.tar.bz2
 # Source0-md5:	61e717d561c498f883e3bfcb536e0622
 Patch0:		kde-ac260-lt.patch
-Patch1:		%{name}-am110.patch
+Patch1:		kde-am.patch
 URL:		http://www.kde-apps.org/content/show.php?content=46526
 BuildRequires:	autoconf
 BuildRequires:	automake
