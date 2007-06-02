@@ -10,8 +10,8 @@ Source0:	http://ubiz.ru/dm/%{name}-%{version}.tar.bz2
 Patch0:		kde-ac260-lt.patch
 Patch1:		kde-am.patch
 URL:		http://www.kde-apps.org/content/show.php?content=46526
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1.6.1
 BuildRequires:	kdebase-devel
 Requires:	fuse-iso
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,14 +40,10 @@ cp -f /usr/share/automake/config.sub admin
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Utilities/kfuseisomount.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
-
-install -D $RPM_BUILD_ROOT%{_datadir}/doc/HTML/en/kfuseiso/index.cache.bz2 $RPM_BUILD_ROOT%{_kdedocdir}/en/kfuseiso/index.cache.bz2
-install -D $RPM_BUILD_ROOT%{_datadir}/doc/HTML/en/kfuseiso/index.docbook $RPM_BUILD_ROOT%{_kdedocdir}/en/kfuseiso/index.docbook
-rm -f $RPM_BUILD_ROOT%{_datadir}/doc/HTML/en/kfuseiso/index.{cache.bz2,docbook}
+	DESTDIR=$RPM_BUILD_ROOT \
+	applnkutilitiesdir=%{_desktopdir}/kde \
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
 
 %find_lang %{name} --all-name --with-kde
 
