@@ -2,14 +2,13 @@ Summary:	Small set of modules to help access ISO image files in KDE
 Summary(pl.UTF-8):	Mały zbiór modułów pomagających przy dostępie do plików obrazów ISO w KDE
 Name:		kfuseiso
 Version:	20070117
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ubiz.ru/dm/%{name}-%{version}.tar.bz2
 # Source0-md5:	61e717d561c498f883e3bfcb536e0622
 Patch0:		kde-ac260-lt.patch
 Patch1:		kde-am.patch
-Patch2:		kde-common-PLD.patch
 URL:		http://www.kde-apps.org/content/show.php?content=46526
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6.1
@@ -28,7 +27,6 @@ KDE.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
